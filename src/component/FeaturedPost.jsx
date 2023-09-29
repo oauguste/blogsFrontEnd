@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import samplePic from "../assets/men.jpg";
-import env from "react-dotenv";
+
 const FeaturedPost = () => {
   const [postsData, setPostsData] = useState({ posts: [] });
   const dateObject = (unformattedDate) => {
@@ -10,7 +10,7 @@ const FeaturedPost = () => {
   };
 
   useEffect(() => {
-    const url = `${env.SERVER_URL}posts`;
+    const url = `https://blogapi-production-1975.up.railway.app/posts`;
     const fetchPosts = async () => {
       try {
         const response = await fetch(url);
