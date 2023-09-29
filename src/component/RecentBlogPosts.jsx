@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import samplePic from "../assets/men.jpg";
 import PropTypes from "prop-types";
-import env from "react-dotenv";
+
 const RecentBlogPosts = ({ wrapped }) => {
   RecentBlogPosts.propTypes = {
     wrapped: PropTypes.bool,
@@ -18,7 +18,7 @@ const RecentBlogPosts = ({ wrapped }) => {
   };
 
   useEffect(() => {
-    const url = `${env.SERVER_URL}posts`;
+    const url = `https://blogapi-production-1975.up.railway.app/posts`;
     const fetchRecent = async () => {
       try {
         const response = await fetch(url);
