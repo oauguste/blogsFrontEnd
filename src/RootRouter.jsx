@@ -5,7 +5,7 @@ import {
   Routes,
 } from "react-router-dom";
 import App from "./App";
-import Header from "./component/header";
+import Header from "./component/Header";
 import FullPost from "./component/FullPost";
 
 function RootRouter() {
