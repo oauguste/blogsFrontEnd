@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecentBlogPosts from "../component/RecentBlogPosts";
 import samplePic from "../assets/men.jpg";
+import env from "react-dotenv";
 const FullPost = () => {
   const [post, setPost] = useState(null);
 
@@ -12,7 +13,7 @@ const FullPost = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:3000/posts/${id}`;
+    const url = `${env.SERVER_URL}posts/${id}`;
     const fetchPosts = async () => {
       try {
         const response = await fetch(url);
