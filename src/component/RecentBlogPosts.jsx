@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import samplePic from "../assets/men.jpg";
 import PropTypes from "prop-types";
-
+import env from "react-dotenv";
 const RecentBlogPosts = ({ wrapped }) => {
   RecentBlogPosts.propTypes = {
     wrapped: PropTypes.bool,
@@ -18,7 +18,7 @@ const RecentBlogPosts = ({ wrapped }) => {
   };
 
   useEffect(() => {
-    const url = "http://localhost:3000/posts";
+    const url = `${env.SERVER_URL}posts`;
     const fetchRecent = async () => {
       try {
         const response = await fetch(url);

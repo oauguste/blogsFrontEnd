@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import samplePic from "../assets/men.jpg";
+import env from "react-dotenv";
 const FeaturedPost = () => {
   const [postsData, setPostsData] = useState({ posts: [] });
   const dateObject = (unformattedDate) => {
@@ -9,7 +10,7 @@ const FeaturedPost = () => {
   };
 
   useEffect(() => {
-    const url = "http://localhost:3000/posts";
+    const url = `${env.SERVER_URL}posts`;
     const fetchPosts = async () => {
       try {
         const response = await fetch(url);
