@@ -7,6 +7,8 @@ import {
 import App from "./App";
 import Header from "./component/Header";
 import FullPost from "./component/FullPost";
+import SignUp from "./component/SignUp";
+import SignIn from "./component/SignIn";
 
 function RootRouter() {
   return (
@@ -20,6 +22,8 @@ function RootRouter() {
           exact
           element={<FullPost />}
         />
+        <Route path="/signup" exact element={<SignUp />} />
+        <Route path="/signin" exact element={<SignIn />} />
       </Routes>
     </Router>
   );

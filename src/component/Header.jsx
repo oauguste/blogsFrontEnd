@@ -16,10 +16,10 @@ const Header = () => {
             <a href={""}>{"About"}</a>
           </li>
           <li className="hover:underline">
-            <a href={""}>{"Sign In"}</a>
+            <Link to="/signup">Sign Up</Link>
           </li>
           <li className="hover:underline">
-            <a href={""}>{"Log In"}</a>
+            <Link to="/signin">Sign In</Link>
           </li>
         </ul>
       </div>
