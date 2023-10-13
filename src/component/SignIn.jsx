@@ -31,16 +31,39 @@ const SignIn = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+
+  const url = `https://blogapi-production-1975.up.railway.app/login`;
+  const loginUser = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+        credentials: "include",
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(
+          data.message || "Failed to authenticate"
+        );
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      await loginUser();
       console.log("Form data", formState);
       setFormState(initialFormState);
       setError("");
       alert("Form submitted successfully");
     }
   };
-
   return (
     <div className="flex justify-center min-h-fit">
       <form

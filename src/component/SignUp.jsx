@@ -46,9 +46,34 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const url = `https://blogapi-production-1975.up.railway.app/signup`;
+
+  const signUpUser = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+        credentials: "include",
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(
+          data.message || "Failed to Sign Up"
+        );
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      await signUpUser();
       // Handle successful form submission, like calling an API
       console.log("Form data", formState);
       setFormState(initialFormState); // Reset form after successful submission
